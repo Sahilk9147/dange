@@ -17,16 +17,13 @@ export default function Letter() {
         transition={{ delay: 0.2, type: 'spring', stiffness: 120 }}
         className="font-bebas text-4xl text-[#f5c518] mb-6"
       >
-        💌 A Letter To You
+        💌 Happy birthday to my shawtyy🫶🫶
       </motion.h2>
       <p className="text-gray-300 text-base leading-9 max-w-2xl mx-auto">
-        To my favourite person in the whole universe — Happy Birthday! 🎉<br /><br />
-        I don't know how I got this lucky, but somehow the universe brought you into my life,
-        and that is the best thing that has ever happened to me. You are not just my girlfriend —
-        you are my best friend, my safe place, my reason to smile every morning.<br /><br />
-        On your special day, I want you to know that every moment with you is one I treasure.
-        You deserve all the love, all the laughter, and all the happiness in the world.<br /><br />
-        <strong className="text-[#f5c518]">Happy Birthday, my love. Here's to us. 🥂❤️</strong>
+        You have turned 22 years today, so gorgeous, beautiful, smart, matured. 
+        I love you so much and missing you every moment of my life.<br /><br />
+        On this beautiful day, i want to tell u one thing Follow your passion and love me more and more🫶🫶 
+        and i obviously love u moreee my bby ✨
       </p>
     </motion.div>
   );

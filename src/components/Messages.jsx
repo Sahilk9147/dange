@@ -2,12 +2,12 @@ import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 
 const msgs = [
-  { e: '🌅', t: '"Every morning I wake up grateful that you exist in this world and that I get to call you mine."' },
-  { e: '🌙', t: '"Even on my worst days, one text from you is enough to make everything feel okay again."' },
-  { e: '🌹', t: '"You are the kind of person that makes everyone around you feel special — and that is rare and beautiful."' },
-  { e: '⭐', t: '"I love you not just for who you are, but for who I become when I am with you."' },
-  { e: '🎂', t: '"Happy Birthday! Today the world got a little brighter because you were born into it. 🎉"' },
-  { e: '🔮', t: '"Here\'s to every adventure still ahead of us — I can\'t wait to live them all with you."' },
+  { e: '💍', t: '"Firstly I love u so much and day by day my love is turning into a habit, you are my habit bby which i will never leave"' },
+  { e: '🌸', t: '"You are such a kind and lovely person"' },
+  { e: '🧸', t: '"You always do everything according to me and always pamper me"' },
+  { e: '👑', t: '"You always prioritise me over you"' },
+  { e: '🫂', t: '"I love how u treat me whenever im feeling low"' },
+  { e: '✨', t: '"And my fav i love the way u laugh ✨😭😭😭"' },
 ];
 
 export default function Messages() {

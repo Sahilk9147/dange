@@ -2,12 +2,12 @@ import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 
 const reasons = [
-  { n: '01', t: 'Your smile lights up every room you walk into.' },
-  { n: '02', t: 'You laugh at your own jokes before finishing them.' },
-  { n: '03', t: 'You make even boring days feel like adventures.' },
-  { n: '04', t: 'Your kindness — you care so deeply for everyone.' },
-  { n: '05', t: 'You always know what to say to make me feel better.' },
-  { n: '06', t: 'You are my favourite person on this planet. Always.' },
+  { n: '01', t: 'I love the way u correct my english. 🫶🫶' },
+  { n: '02', t: 'The way you take care of me like my mom 😭😭😭🫶' },
+  { n: '03', t: 'The way you hold my hand while crossing the road ♥️♥️' },
+  { n: '04', t: 'The way u deal with me, cause u know i have more mood swings🫶🫶' },
+  { n: '05', t: 'Love the way u ask me everytime how am i doing, im ohkk or not' },
+  { n: '06', t: 'Love the way when u feed me first bite😘🫶' },
 ];
 
 export default function Reasons() {

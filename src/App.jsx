@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import ProfileScreen from './components/ProfileScreen';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import CardRow from './components/CardRow';
@@ -13,21 +12,21 @@ import Letter from './components/Letter';
 
 // ── Card data ──
 const MEMORY_CARDS = [
-  { photo: '/photos/photo3.jpg',  label: 'Us Together 🌅',    videoKey: 'v1' },
-  { photo: '/photos/photo6.jpg',  label: 'Birthday Magic 🎂',  videoKey: 'v2' },
-  { photo: '/photos/photo9.jpg',  label: 'Our Adventures 🌿',  videoKey: 'v3' },
-  { photo: '/photos/photo12.jpg', label: 'Sweet Memories 🌌',  videoKey: 'v4' },
-  { photo: '/photos/photo16.jpg', label: 'My Heart ❤️',         videoKey: 'v5' },
-  { photo: '/photos/photo20.jpg', label: 'Golden Moments ✨',  videoKey: 'v6' },
-  { photo: '/photos/photo24.jpg', label: 'Always You 💖',       videoKey: 'v7' },
+  { label: 'Us Together 🌅',    videoKey: 'v1' },
+  { label: 'Birthday Magic 🎂',  videoKey: 'v2' },
+  { label: 'Our Adventures 🌿',  videoKey: 'v3' },
+  { label: 'Sweet Memories 🌌',  videoKey: 'v4' },
+  { label: 'My Heart ❤️',         videoKey: 'v5' },
+  { label: 'Golden Moments ✨',  videoKey: 'v6' },
+  { label: 'Always You 💖',       videoKey: 'v7' },
 ];
 
 const FAVORITE_CARDS = [
-  { photo: '/photos/photo7.jpg',  label: 'Birthday Glow ✨',   videoKey: 'v2' },
-  { photo: '/photos/photo11.jpg', label: 'Hand in Hand 🌸',    videoKey: 'v3' },
-  { photo: '/photos/photo14.jpg', label: 'Under the Stars 🌠', videoKey: 'v4' },
-  { photo: '/photos/photo18.jpg', label: 'I Love You More ❤️', videoKey: 'v5' },
-  { photo: '/photos/photo22.jpg', label: 'Our World 🌍',        videoKey: 'v6' },
+  { label: 'Birthday Glow ✨',   videoKey: 'v2' },
+  { label: 'Hand in Hand 🌸',    videoKey: 'v3' },
+  { label: 'Under the Stars 🌠', videoKey: 'v4' },
+  { label: 'I Love You More ❤️', videoKey: 'v5' },
+  { label: 'Our World 🌍',        videoKey: 'v6' },
 ];
 
 const VIDEO_DATA = {
@@ -39,8 +38,8 @@ const VIDEO_DATA = {
   v6: { title: 'Golden Moments ✨',    desc: 'Every single moment with you shines like gold.',                    src: 'video6.mp4' },
   v7: { title: 'Always You 💖',        desc: 'It was always going to be you. Always.',                            src: 'video7.mp4' },
   letter: {
-    title: '💌 Love Letter',
-    desc: `Happy Birthday, my love! 🎉\n\nI don't know how I got this lucky. You are my best friend, my safe place, my reason to smile every morning.\n\nEvery moment with you is one I treasure. You deserve all the love and happiness in the world.\n\nHappy Birthday, my love. Here's to us. 🥂❤️`,
+    title: '💌 Happy birthday to my shawtyy🫶🫶',
+    desc: `You have turned 22 years today, so gorgeous, beautiful, smart, matured. I love you so much and missing you every moment of my life.\n\nOn this beautiful day, i want to tell u one thing Follow your passion and love me more and more🫶🫶 and i obviously love u moreee my bby ✨`,
     src: null,
   },
 };
@@ -82,14 +81,13 @@ function HeartsCanvas() {
 }
 
 export default function App() {
-  const [profile, setProfile] = useState(null);
-  const [modal, setModal]     = useState(null);
-  const [toast, setToast]     = useState(false);
+  const [modal, setModal] = useState(null);
+  const [toast, setToast] = useState(true);
 
-  const handleSelect = (p) => {
-    setProfile(p);
-    setTimeout(() => { setToast(true); setTimeout(() => setToast(false), 4500); }, 700);
-  };
+  useEffect(() => {
+    const t = setTimeout(() => setToast(false), 4500);
+    return () => clearTimeout(t);
+  }, []);
 
   const openVideo = (key) => setModal(VIDEO_DATA[key]);
   const openCard  = (card) => setModal(VIDEO_DATA[card.videoKey]);
@@ -98,35 +96,23 @@ export default function App() {
     <div className="min-h-screen bg-[#0a0a0a] text-white">
       <HeartsCanvas />
 
-      {/* Profile screen */}
-      <AnimatePresence>{!profile && <ProfileScreen onSelect={handleSelect} />}</AnimatePresence>
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }}>
+        <Navbar profile={{ photo: '/photos/photo1.jpg', name: 'Her 👑' }} />
+        <Hero onPlay={() => openVideo('v1')} onLetter={() => openVideo('letter')} />
+        <CardRow title='📸 Our Memories <span style="color:#f5c518">— The Best Episodes</span>' cards={MEMORY_CARDS} onCardClick={openCard} />
+        <Gallery />
+        <Reasons />
+        <Letter />
+        <Messages />
+        <CardRow title='🌟 Fan Favorites <span style="color:#f5c518">— Watch Again</span>' cards={FAVORITE_CARDS} onCardClick={openCard} />
+        <footer className="text-center py-10 text-gray-600 text-sm">
+          Made with <span className="text-[#e50914]">♥</span> just for you — © ShawtyFlix 2026
+        </footer>
+      </motion.div>
 
-      {/* Main site */}
-      <AnimatePresence>
-        {profile && (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }}>
-            <Navbar profile={profile} />
-            <Hero onPlay={() => openVideo('v1')} onLetter={() => openVideo('letter')} />
-            <CardRow title='📸 Our Memories <span style="color:#f5c518">— The Best Episodes</span>' cards={MEMORY_CARDS} onCardClick={openCard} />
-            <Gallery />
-            <Reasons />
-            <Letter />
-            <Messages />
-            <CardRow title='🌟 Fan Favorites <span style="color:#f5c518">— Watch Again</span>' cards={FAVORITE_CARDS} onCardClick={openCard} />
-            <footer className="text-center py-10 text-gray-600 text-sm">
-              Made with <span className="text-[#e50914]">♥</span> just for you — © ShawtyFlix 2026
-            </footer>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* Video modal */}
       <VideoModal modal={modal} onClose={() => setModal(null)} />
+      <MusicPlayer />
 
-      {/* Music player */}
-      {profile && <MusicPlayer />}
-
-      {/* Toast */}
       <AnimatePresence>
         {toast && (
           <motion.div
